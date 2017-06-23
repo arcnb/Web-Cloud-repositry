@@ -1,0 +1,63 @@
+/* Write your normal css which does not use css from bootstrap here*/
+.centerimage {
+    position:absolute;
+
+    margin-top: 1px;
+    float: left;
+}
+
+.name{
+    text-align: right;
+
+
+}
+.name1{
+    font-family:"orbiton";
+    margin-bottom: inherit;
+    padding-bottom: 0%;
+}
+.name2{
+   font-family:"orbiton";
+    font-size: 23px;
+    padding-top: 0%;
+}
+.align {
+    top:60%;
+    display: block;
+    margin-top: 5%;
+    align: middle !important;
+
+
+}
+
+
+
+.images{
+
+
+    clear: both;
+    padding: 5px;
+}
+
+
+
+div.container {
+    display:inline-block;
+    float:left;
+}
+
+p {
+    text-align:center;
+}
+.between {
+
+
+    float: left;
+
+}
+
+.main{
+    margin-left: 15.4%;
+    margin-right: 17%;
+}
+

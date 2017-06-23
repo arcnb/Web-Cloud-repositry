@@ -1,0 +1,54 @@
+.name{
+
+text-align: center;
+}
+
+.name1{
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.line{
+
+    display: block;
+    height: .5px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    padding: 0;
+    border-style: solid;
+    border-top-color:black;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+
+.body{
+
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 1000px;
+    height: 200px;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+
+.flex-item {
+
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+}
+.footer{
+    margin-left: 10%;
+}
+
+
