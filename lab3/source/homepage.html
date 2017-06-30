@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('MainCtrl', function ($http) {
+
+            var vm= this;
+            var image=new Image();
+            vm.fetchData = function (user) {
+                vm.loading = true;
+                $http.get('https://api.github.com/users/' + user.name).then(function (res) {
+
+                    console.log(res);
+                    vm.name=res.data.name;
+                    vm.id=res.data.id;
+                    vm.createdat=res.data.created_at;
+                    vm.followers=res.data.followers;
+                    vm.following=res.data.following;
+                    vm.url=res.data.html_url;
+                    vm.loading=false;
+                })
+
+                $http.get('https://api.github.com/users/' + user.name+'/followers').then(function (res1) {
+
+                    console.log(res1);
+                    vm.followersname=res1.data[0].login;
+                    vm.followersname1=res1.data[1].login;
+                    vm.followersname2=res1.data[2].login;
+                    vm.followersname3=res1.data[3].login;
+                    vm.followersname4=res1.data[4].login;
+
+                })
+
+                $http.get('https://api.github.com/users/' + user.name+'/repos').then(function (res2) {
+
+                    console.log(res2);
+                    vm.repo=res2.data.length;
+                    vm.repo1=res2.data[0].name;
+                    vm.repo2=res2.data[1].name;
+                    vm.repo3=res2.data[2].name;
+                    vm.repo4=res2.data[3].name;
+                    vm.repo5=res2.data[4].name;
+
+                })
+
+                $http.get('https://api.github.com/users/' + user.name).then(function (res3) {
+
+                    console.log(res3);
+                    vm.picture=res3.data.avatar_url;
+
+                })
+
+            }
+            
+        })
+
+    </script>
+    <style>
+        .body{
+            text-align: center;
+            text-align: center;
+        }
+    </style>
+    <title>Home Page</title>
+</head>
+<h1 style="color: aliceblue; text-align: center"> Welcome </h1>
+<body background="image.jpg" ng-controller='MainCtrl as vm'>
+<div class="body">
+<label style="color: aliceblue" for="enter"> Enter User name</label>
+<input type="text" ng-model="user.name" name="enter">
+<button ng-click="vm.fetchData(user)">Go!</button>
+<h4 ng-if="vm-loading === true"> Loading...</h4>
+<h3 style="color: aliceblue">name={{vm.name}}</h3>
+    <h3 style="color: aliceblue">id={{vm.id}}</h3>
+    <img src="{{vm.picture}}" alt="image"  height="80" width="80">
+    <h3 style="color: aliceblue" ><a href="{{vm.url}}" style="color: aliceblue">link to the account</a></h3>
+    <h3 style="color: aliceblue">created_at={{vm.createdat}}</h3>
+    <h3 style="color: aliceblue">following={{vm.following}}</h3>
+    <h3 style="color: aliceblue">followers={{vm.followers}}</h3>
+    <h3 style="color: aliceblue">followers names={{vm.followersname}} &nbsp; &nbsp; {{vm.followersname1}} &nbsp; &nbsp; {{vm.followersname2}} &nbsp; &nbsp; {{vm.followersname3}} &nbsp;  &nbsp; {{vm.followersname4}}</h3>
+    <h3 style="color: aliceblue">no. of public repos={{vm.repo}}</h3>
+    <h3 style="color: aliceblue">name of public repos={{vm.repo1}}  &nbsp;&nbsp;  {{vm.repo2}}  &nbsp;&nbsp;  {{vm.repo3}}  &nbsp;&nbsp;  {{vm.repo4}}  &nbsp;&nbsp;  {{vm.repo5}}</h3>
+
+    <a href="login.html" style="color: blue"> Sign Out! </a>
+</div>
+
+
+</body>
+
+</html>
