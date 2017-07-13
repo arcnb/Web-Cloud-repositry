@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maps</title>
+    <style>
+        #map{
+            height: 100%;
+
+        }
+        html,body{
+            height: 100%;
+            margin: 0;
+            padding: 0;
+
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <script>
+        function gettingJSON(){
+
+            $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=London&APPID=2813577507e7ceb990d910322f8c1fe7",function(json){
+                document.write(JSON.stringify(json));
+
+            });
+        }
+    </script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"
+            type="text/javascript"></script>
+    <script>
+
+
+        var map;
+        function initMap() {
+
+            var add = document.getElementById("tot").value;
+            map = new google.maps.Map(document.getElementById('map'), {
+
+                zoom: 8,
+            });
+            var geo = new google.maps.Geocoder();
+            geo.geocode({
+                    address: 'London, UK'
+
+                },
+                function (results, status) {
+                    if (status == google.maps.Geocoder.OK) {
+                        new google.maps.Marker({
+                            position: results[0].geometry.location,
+                            map: map
+                        });
+
+                        map.setCenter(results[0].geometry.location);
+
+                    }
+
+                });
+        }
+    </script>
+
+</head>
+<body>
+
+<div id="map"></div>
+
+
+
+</body>
+</html>

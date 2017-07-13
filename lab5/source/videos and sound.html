@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <script>
+        var app= angular.module('myA',[]);
+        app.controller('myctr',function ($scope,$http) {
+
+
+            $http.get("http://www.freesound.org/apiv2/search/text/?query=" + song + "&token=v4U9gO78nyhRnNv4RkWub5jH70hUIMHDpJaFguX8").then(function (response) {
+                $scope.vm1 = response.data;
+
+            })
+
+
+        })
+
+    </script>
+    <title>freesound</title>
+</head>
+<body ng-app="myA" ng-controller="myctr">
+
+<label>enter a song name to search </label><br>
+<input type="text" ng-model="song">
+<button ng-click="name()" > go! </button>
+
+<h3>{{vm1}}</h3>
+</body>
+</html>
